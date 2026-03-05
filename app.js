@@ -48,6 +48,15 @@ function renderGrid() {
 
   grid.innerHTML = filtered.map(z => renderCard(z)).join('');
   
+  // Card click → detail page
+  grid.querySelectorAll('.card-clickable').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.copy-addr') || e.target.closest('.token-link')) return;
+      window.location.href = card.dataset.href;
+    });
+  });
+
   // Attach copy handlers
   grid.querySelectorAll('.copy-addr').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -119,7 +128,7 @@ function renderCard(z) {
 
   const companyUrl = `company.html?c=${slugify(z.name)}`;
 
-  return `<a href="${companyUrl}" class="card" style="text-decoration:none;color:inherit">
+  return `<div class="card card-clickable" data-href="${companyUrl}">
     ${statusDot}
     <div class="card-header">
       <div class="card-logo">${z.url ? `<img src="https://www.google.com/s2/favicons?domain=${new URL(z.url).hostname}&sz=128" alt="${z.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-logo-fallback" style="display:none">${z.logo}</span>` : z.logo}</div>
@@ -131,7 +140,7 @@ function renderCard(z) {
     <div class="card-tags">${tags}</div>
     ${agentsHtml}
     ${tokenHtml}
-  </a>`;
+  </div>`;
 }
 
 // Stats

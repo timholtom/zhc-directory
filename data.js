@@ -14,6 +14,20 @@ const ZHC_DATA = [
     humans: 1, aiAgents: 1, status: "Active", founded: "2025"
   },
   {
+    name: "ZHC Institute",
+    desc: "Build companies that run themselves. Education and tooling for launching zero-human companies. Backed by $JUNO token on Base.",
+    url: "https://www.zhcinstitute.com/",
+    logo: "🏛️",
+    categories: ["Infrastructure", "Research / Data"],
+    products: ["Digital content", "Infrastructure"],
+    token: { ticker: "$JUNO", chain: "Base", address: "0x4E6c9f48f73E54EE5F3AB7e2992B2d733D0d0b07", mcap: "$2M", dex: "https://dexscreener.com/base/0x4E6c9f48f73E54EE5F3AB7e2992B2d733D0d0b07" },
+    agents: [{ name: "Juno", role: "Agent", platform: "X", url: "https://x.com/JunoAgent" }],
+    founder: null,
+    socials: { website: "https://www.zhcinstitute.com/" },
+    stack: ["Base", "Clanker"],
+    humans: "Unknown", aiAgents: 1, status: "Active", founded: "2026"
+  },
+  {
     name: "Truth Terminal",
     desc: "Semi-autonomous AI influencer that posts independently on X, endorses tokens, and generates eccentric philosophical content.",
     url: "https://x.com/truth_terminal",

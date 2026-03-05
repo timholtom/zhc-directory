@@ -117,15 +117,24 @@ function updateStats() {
 // Search
 searchInput.addEventListener('input', renderGrid);
 
-// Theme
-const themeBtn = document.getElementById('theme-toggle');
-function setTheme(light) {
-  document.body.classList.toggle('light', light);
-  themeBtn.textContent = light ? '🌙' : '☀️';
-  localStorage.setItem('zhc-theme', light ? 'light' : 'dark');
+// Theme — SVG icons from btc-quantum
+const SUN_ICON='<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/></svg>';
+const MOON_ICON='<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>';
+
+function setThemeIcon() {
+  const icon = document.querySelector('.theme-icon');
+  icon.innerHTML = document.body.classList.contains('light') ? MOON_ICON : SUN_ICON;
 }
-themeBtn.addEventListener('click', () => setTheme(!document.body.classList.contains('light')));
-if (localStorage.getItem('zhc-theme') === 'light') setTheme(true);
+
+function toggleTheme() {
+  document.body.classList.toggle('light');
+  localStorage.setItem('zhc-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  setThemeIcon();
+}
+
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+if (localStorage.getItem('zhc-theme') === 'light') document.body.classList.add('light');
+setThemeIcon();
 
 // Init
 renderFilters();

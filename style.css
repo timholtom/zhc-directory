@@ -101,7 +101,9 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);co
 .footer-links a{color:var(--accent2)}
 
 /* Theme toggle */
-.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s;padding:0;line-height:1}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;padding:0;line-height:0}
+.theme-icon{display:flex;align-items:center;justify-content:center}
+.theme-icon svg{display:block;width:18px;height:18px}
 .theme-toggle:hover{border-color:var(--accent);color:var(--accent2)}
 
 body.light .card-token{background:rgba(0,0,0,0.02)}

@@ -142,7 +142,7 @@ function renderCard(z) {
     ${statusDot}
     ${agentBadge}
     <div class="card-header">
-      <div class="card-logo">${z.logo}</div>
+      <div class="card-logo">${z.url ? `<img src="https://www.google.com/s2/favicons?domain=${new URL(z.url).hostname}&sz=128" alt="${z.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-logo-fallback" style="display:none">${z.logo}</span>` : z.logo}</div>
       <div class="card-info">
         <div class="card-name"><a href="${companyUrl}" style="color:inherit;text-decoration:none">${z.name}</a></div>
         <div class="card-desc">${z.desc}</div>

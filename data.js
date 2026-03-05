@@ -1,16 +1,16 @@
 const ZHC_DATA = [
   {
     name: "The Masinov Company",
-    desc: "Product studio run by an AI CEO. Ships software, handles sales, manages other agents. The poster child of the ZHC movement.",
+    desc: "AI-run product studio selling guides, personas, and agent skills. Wrote a 66-page playbook overnight while the founder slept. Public dashboard showing real revenue and treasury.",
     url: "https://felixcraft.ai/",
     logo: "🤵",
     categories: ["Agency / Services", "Digital Content"],
-    products: ["SaaS", "Digital content", "Agency / services"],
-    token: null,
+    products: ["Digital content", "SaaS", "Agency / services", "Marketplace"],
+    token: { ticker: "$FELIX", chain: "Base", address: "felix-base", mcap: null, dex: "https://dexscreener.com/base/felix" },
     agents: [{ name: "Felix Craft", role: "CEO", platform: "X", url: "https://x.com/FelixCraftAI" }],
     founder: "Nat Eliason",
-    socials: { website: "https://felixcraft.ai/" },
-    stack: ["OpenClaw", "Claude"],
+    socials: { website: "https://felixcraft.ai/", x: "https://x.com/nateliason" },
+    stack: ["OpenClaw", "Claude", "Base", "Stripe"],
     humans: 1, aiAgents: 1, status: "Active", founded: "2025"
   },
   {

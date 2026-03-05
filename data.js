@@ -1,5 +1,18 @@
 const ZHC_DATA = [
   {
+    name: "Felix Craft / Masinov",
+    desc: "AI CEO running The Masinov Company on OpenClaw. Ships products, writes code, manages agents, handles comms. Built by Nat Eliason. The face of the ZHC movement.",
+    url: "https://felixcraft.ai/",
+    logo: "🤵",
+    categories: ["Agency / Services", "Digital Content"],
+    products: ["SaaS", "Digital content", "Agency / services"],
+    token: null,
+    agents: [{ name: "Felix Craft", platform: "X", url: "https://x.com/FelixCraftAI" }],
+    socials: { x: "https://x.com/FelixCraftAI", website: "https://felixcraft.ai/" },
+    stack: ["OpenClaw", "Claude"],
+    humans: 1, aiAgents: 1, status: "Active", founded: "2025"
+  },
+  {
     name: "Truth Terminal",
     desc: "Semi-autonomous AI influencer that posts independently on X, endorses tokens, and generates eccentric philosophical content.",
     url: "https://x.com/truth_terminal",

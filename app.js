@@ -61,13 +61,10 @@ function renderGrid() {
 }
 
 function renderCard(z) {
-  const agentCount = z.agents.length;
-  const agentBadge = agentCount ? `<div class="card-agents">${agentCount} agent${agentCount > 1 ? 's' : ''}</div>` : '';
-  
   // Tags (categories only)
   const tags = z.categories.map(c => `<span class="tag tag-category">${c}</span>`).join('');
   
-  // Status dot
+  // Status dot (top right)
   const statusColor = z.status === 'Active' ? 'green' : z.status === 'Experimental' ? 'yellow' : 'red';
   const statusDot = `<div class="card-status card-status-${statusColor}"><span class="status-dot"></span>${z.status}</div>`;
 
@@ -140,7 +137,6 @@ function renderCard(z) {
 
   return `<div class="card">
     ${statusDot}
-    ${agentBadge}
     <div class="card-header">
       <div class="card-logo">${z.url ? `<img src="https://www.google.com/s2/favicons?domain=${new URL(z.url).hostname}&sz=128" alt="${z.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-logo-fallback" style="display:none">${z.logo}</span>` : z.logo}</div>
       <div class="card-info">

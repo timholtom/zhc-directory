@@ -34,18 +34,58 @@
   </div>
 </header>
 
-<section class="filters" id="directory">
+<section class="directory-section" id="directory">
   <div class="container">
-    <div class="filter-bar">
-      <input type="text" id="search" placeholder="Search companies, tokens, agents..." class="search-input">
-      <div class="filter-tags" id="filter-tags"></div>
-    </div>
-  </div>
-</section>
+    <div class="directory-layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <span class="sidebar-title">Filters</span>
+          <button class="sidebar-clear" id="clear-filters">Clear all</button>
+        </div>
 
-<section class="directory">
-  <div class="container">
-    <div class="grid" id="grid"></div>
+        <div class="sidebar-search">
+          <input type="text" id="search" placeholder="Search..." class="search-input">
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-title">Category</div>
+          <div class="filter-options" id="filter-categories"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-title">Chain</div>
+          <div class="filter-options" id="filter-chains"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-title">Status</div>
+          <div class="filter-options" id="filter-status"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-title">Token</div>
+          <div class="filter-options" id="filter-token"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-title">Products</div>
+          <div class="filter-options" id="filter-products"></div>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-group-title">Founded</div>
+          <div class="filter-options" id="filter-founded"></div>
+        </div>
+      </aside>
+
+      <div class="directory-main">
+        <div class="directory-toolbar">
+          <button class="filter-toggle" id="filter-toggle">☰ Filters</button>
+          <span class="result-count" id="result-count"></span>
+        </div>
+        <div class="grid" id="grid"></div>
+      </div>
+    </div>
   </div>
 </section>
 

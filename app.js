@@ -6,26 +6,91 @@ function slugify(name) {
 
 const grid = document.getElementById('grid');
 const searchInput = document.getElementById('search');
-const filterTagsEl = document.getElementById('filter-tags');
-let activeFilter = 'All';
 
-// Extract all unique categories
-const allCategories = ['All', ...new Set(ZHC_DATA.flatMap(z => z.categories))].sort((a,b) => a === 'All' ? -1 : a.localeCompare(b));
+// Active filters state
+const activeFilters = {
+  categories: new Set(),
+  chains: new Set(),
+  status: new Set(),
+  token: new Set(),
+  products: new Set(),
+  founded: new Set()
+};
 
-// Render filter tags
-function renderFilters() {
-  filterTagsEl.innerHTML = allCategories.map(cat => 
-    `<button class="filter-tag ${cat === activeFilter ? 'active' : ''}" data-cat="${cat}">${cat}</button>`
+// Extract unique values
+const allCategories = [...new Set(ZHC_DATA.flatMap(z => z.categories))].sort();
+const allChains = [...new Set(ZHC_DATA.filter(z => z.token).map(z => z.token.chain))].sort();
+const allStatuses = [...new Set(ZHC_DATA.map(z => z.status))].sort();
+const allProducts = [...new Set(ZHC_DATA.flatMap(z => z.products || []))].sort();
+const allFounded = [...new Set(ZHC_DATA.map(z => z.founded))].sort();
+
+// Count items per filter value
+function countFor(field, value) {
+  return ZHC_DATA.filter(z => {
+    if (field === 'categories') return z.categories.includes(value);
+    if (field === 'chains') return z.token?.chain === value;
+    if (field === 'status') return z.status === value;
+    if (field === 'token') return value === 'Yes' ? z.token : !z.token;
+    if (field === 'products') return (z.products || []).includes(value);
+    if (field === 'founded') return z.founded === value;
+    return false;
+  }).length;
+}
+
+// Render sidebar filters
+function renderSidebar() {
+  renderFilterGroup('filter-categories', 'categories', allCategories);
+  renderFilterGroup('filter-chains', 'chains', allChains);
+  renderFilterGroup('filter-status', 'status', allStatuses);
+  document.getElementById('filter-token').innerHTML = ['Yes', 'No'].map(v =>
+    `<button class="filter-option ${activeFilters.token.has(v)?'active':''}" data-field="token" data-value="${v}">
+      <span class="filter-check"></span>${v === 'Yes' ? 'Has token' : 'No token'}
+      <span class="filter-count">${countFor('token', v)}</span>
+    </button>`
   ).join('');
-  
-  filterTagsEl.querySelectorAll('.filter-tag').forEach(btn => {
+  renderFilterGroup('filter-products', 'products', allProducts);
+  renderFilterGroup('filter-founded', 'founded', allFounded);
+  attachFilterListeners();
+}
+
+function renderFilterGroup(elId, field, values) {
+  document.getElementById(elId).innerHTML = values.map(v =>
+    `<button class="filter-option ${activeFilters[field].has(v)?'active':''}" data-field="${field}" data-value="${v}">
+      <span class="filter-check"></span>${v}
+      <span class="filter-count">${countFor(field, v)}</span>
+    </button>`
+  ).join('');
+}
+
+function attachFilterListeners() {
+  document.querySelectorAll('.filter-option').forEach(btn => {
     btn.addEventListener('click', () => {
-      activeFilter = btn.dataset.cat;
-      renderFilters();
+      const field = btn.dataset.field;
+      const value = btn.dataset.value;
+      if (activeFilters[field].has(value)) {
+        activeFilters[field].delete(value);
+      } else {
+        activeFilters[field].add(value);
+      }
+      renderSidebar();
       renderGrid();
     });
   });
 }
+
+// Clear all
+document.getElementById('clear-filters').addEventListener('click', () => {
+  Object.values(activeFilters).forEach(s => s.clear());
+  searchInput.value = '';
+  renderSidebar();
+  renderGrid();
+});
+
+// Mobile toggle
+const sidebar = document.getElementById('sidebar');
+document.getElementById('filter-toggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+});
 
 // Render cards
 function renderGrid() {
@@ -37,9 +102,18 @@ function renderGrid() {
       (z.token?.ticker || '').toLowerCase().includes(query) ||
       z.categories.some(c => c.toLowerCase().includes(query)) ||
       z.agents.some(a => a.name.toLowerCase().includes(query));
-    const matchCat = activeFilter === 'All' || z.categories.includes(activeFilter);
-    return matchSearch && matchCat;
+    const matchCat = !activeFilters.categories.size || z.categories.some(c => activeFilters.categories.has(c));
+    const matchChain = !activeFilters.chains.size || (z.token && activeFilters.chains.has(z.token.chain));
+    const matchStatus = !activeFilters.status.size || activeFilters.status.has(z.status);
+    const matchToken = !activeFilters.token.size || 
+      (activeFilters.token.has('Yes') && z.token) || 
+      (activeFilters.token.has('No') && !z.token);
+    const matchProducts = !activeFilters.products.size || (z.products || []).some(p => activeFilters.products.has(p));
+    const matchFounded = !activeFilters.founded.size || activeFilters.founded.has(z.founded);
+    return matchSearch && matchCat && matchChain && matchStatus && matchToken && matchProducts && matchFounded;
   });
+
+  document.getElementById('result-count').textContent = `${filtered.length} of ${ZHC_DATA.length} companies`;
 
   if (!filtered.length) {
     grid.innerHTML = `<div class="empty"><h3>No companies found</h3><p>Try a different search or filter.</p></div>`;
@@ -173,6 +247,6 @@ if (localStorage.getItem('zhc-theme') === 'light') document.body.classList.add('
 setThemeIcon();
 
 // Init
-renderFilters();
+renderSidebar();
 renderGrid();
 updateStats();

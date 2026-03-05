@@ -20,18 +20,18 @@ body.light nav{background:rgba(255,255,255,0.9)}
 .nav-link:hover{color:var(--text)}
 
 /* Hero */
-.hero{text-align:center;padding:80px 24px 48px;max-width:800px;margin:0 auto}
-.hero-badge{display:inline-block;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);color:var(--accent2);font-size:12px;font-weight:600;padding:6px 16px;border-radius:100px;margin-bottom:24px;letter-spacing:0.02em}
+.hero{text-align:center;padding:40px 24px 24px;max-width:800px;margin:0 auto}
+.hero-badge{display:inline-block;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);color:var(--accent2);font-size:12px;font-weight:600;padding:6px 16px;border-radius:100px;margin-bottom:16px;letter-spacing:0.02em}
 .hero h1{font-size:clamp(32px,5vw,56px);white-space:nowrap;font-weight:900;line-height:1.05;letter-spacing:-0.04em;margin-bottom:20px;background:linear-gradient(135deg,#f0f0f5 0%,#8b5cf6 50%,#a78bfa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 body.light .hero h1{background:linear-gradient(135deg,#111827 0%,#7c3aed 50%,#6d28d9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-sub{color:var(--muted);font-size:18px;line-height:1.6;max-width:560px;margin:0 auto 40px}
+.hero-sub{color:var(--muted);font-size:16px;line-height:1.5;max-width:560px;margin:0 auto 20px}
 .hero-stats{display:flex;justify-content:center;gap:48px}
 .hero-stat{text-align:center}
-.hero-stat-num{display:block;font-size:36px;font-weight:900;color:var(--text);letter-spacing:-0.03em}
+.hero-stat-num{display:block;font-size:28px;font-weight:900;color:var(--text);letter-spacing:-0.03em}
 .hero-stat-label{font-size:12px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:0.06em}
 
 /* Filters */
-.filters{padding:24px 0 0}
+.filters{padding:16px 0 0}
 .filter-bar{display:flex;flex-direction:column;gap:12px}
 .search-input{width:100%;padding:14px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;outline:none;transition:border-color 0.2s}
 .search-input:focus{border-color:var(--accent)}
@@ -42,7 +42,7 @@ body.light .hero h1{background:linear-gradient(135deg,#111827 0%,#7c3aed 50%,#6d
 .filter-tag.active{background:var(--accent);border-color:var(--accent);color:white}
 
 /* Grid */
-.directory{padding:32px 0 64px}
+.directory{padding:20px 0 64px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px}
 
 /* Card */

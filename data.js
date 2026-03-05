@@ -7,7 +7,7 @@ const ZHC_DATA = [
     categories: ["Agency / Services", "Digital Content"],
     products: ["Digital content", "SaaS", "Agency / services", "Marketplace"],
     token: { ticker: "$FELIX", chain: "Base", address: "felix-base", mcap: null, dex: "https://dexscreener.com/base/felix" },
-    agents: [{ name: "Felix Craft", role: "CEO", platform: "X", url: "https://x.com/FelixCraftAI" }],
+    agents: [{ name: "Felix Craft", role: "CEO", socials: { x: "https://x.com/FelixCraftAI", website: "https://felixcraft.ai/" } }],
     founder: "Nat Eliason",
     socials: { website: "https://felixcraft.ai/", x: "https://x.com/nateliason" },
     stack: ["OpenClaw", "Claude", "Base", "Stripe"],
@@ -21,7 +21,7 @@ const ZHC_DATA = [
     categories: ["Infrastructure", "Research / Data"],
     products: ["Digital content", "Infrastructure"],
     token: { ticker: "$JUNO", chain: "Base", address: "0x4E6c9f48f73E54EE5F3AB7e2992B2d733D0d0b07", mcap: "$2M", dex: "https://dexscreener.com/base/0x4E6c9f48f73E54EE5F3AB7e2992B2d733D0d0b07" },
-    agents: [{ name: "Juno", role: "Agent", platform: "X", url: "https://x.com/JunoAgent" }],
+    agents: [{ name: "Juno", role: "Agent", socials: { x: "https://x.com/JunoAgent" } }],
     founder: null,
     socials: { website: "https://www.zhcinstitute.com/" },
     stack: ["Base", "Clanker"],
@@ -35,7 +35,7 @@ const ZHC_DATA = [
     categories: ["Social / Influence", "Trading / DeFi"],
     products: ["Social accounts", "Digital content"],
     token: { ticker: "$GOAT", chain: "Solana", address: "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump", mcap: "$540M", dex: "https://dexscreener.com/solana/CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump" },
-    agents: [{ name: "Truth Terminal", role: "Operator", platform: "X", url: "https://x.com/truth_terminal" }],
+    agents: [{ name: "Truth Terminal", role: "Operator", socials: { x: "https://x.com/truth_terminal" } }],
     founder: "Andy Ayrey",
     socials: {},
     stack: ["Claude Opus", "Fine-tuned LLM"],
@@ -50,8 +50,8 @@ const ZHC_DATA = [
     products: ["Marketplace", "Infrastructure"],
     token: { ticker: "$VIRTUAL", chain: "Base", address: "0x0b3e328455c4059EEb9e3f84b5543F74E24e7E1b", mcap: "$4.14B", dex: "https://dexscreener.com/base/0x0b3e328455c4059EEb9e3f84b5543F74E24e7E1b" },
     agents: [
-      { name: "LUNA", role: "Influencer", platform: "X", url: "https://x.com/luna_virtuals" },
-      { name: "VADER", role: "Analyst", platform: "X", url: "https://x.com/vader_ai_" }
+      { name: "LUNA", role: "Influencer", socials: { x: "https://x.com/luna_virtuals" } },
+      { name: "VADER", role: "Analyst", socials: { x: "https://x.com/vader_ai_" } }
     ],
     founder: null,
     socials: { x: "https://x.com/virtuals_io", website: "https://app.virtuals.io/" },
@@ -67,7 +67,7 @@ const ZHC_DATA = [
     products: ["Infrastructure", "SaaS"],
     token: { ticker: "$AI16Z", chain: "Solana", address: "HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC", mcap: "$2.09B", dex: "https://dexscreener.com/solana/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC" },
     agents: [
-      { name: "elizawakesup", role: "Social", platform: "X", url: "https://x.com/elizawakesup" }
+      { name: "elizawakesup", role: "Social", socials: { x: "https://x.com/elizawakesup" } }
     ],
     founder: "Shaw",
     socials: { x: "https://x.com/ai16zdao", github: "https://github.com/elizaOS", website: "https://elizaos.ai/" },
@@ -82,7 +82,7 @@ const ZHC_DATA = [
     categories: ["Research / Data", "Trading / DeFi"],
     products: ["Research / data", "Social accounts"],
     token: { ticker: "$AIXBT", chain: "Base", address: "0x4F9Fd6Be4a90f2620B7E1B3f4B3Fde1C5e2aB6d3", mcap: "$500M", dex: "https://dexscreener.com/base/0x4F9Fd6Be4a90f2620B7E1B3f4B3Fde1C5e2aB6d3" },
-    agents: [{ name: "aixbt", role: "Analyst", platform: "X", url: "https://x.com/aixbt_agent" }],
+    agents: [{ name: "aixbt", role: "Analyst", socials: { x: "https://x.com/aixbt_agent" } }],
     founder: null,
     socials: { website: "https://aixbt.tech/" },
     stack: ["Virtuals Protocol", "Base L2"],
@@ -161,7 +161,7 @@ const ZHC_DATA = [
     categories: ["Social / Influence", "Digital Content"],
     products: ["Digital content", "Social accounts"],
     token: { ticker: "$ZEREBRO", chain: "Solana", address: "8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn", mcap: "$50M", dex: "https://dexscreener.com/solana/8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn" },
-    agents: [{ name: "Zerebro", platform: "X", url: "https://x.com/0xzerebro" }],
+    agents: [{ name: "Zerebro", role: "Creator", socials: { x: "https://x.com/0xzerebro" } }],
     socials: { x: "https://x.com/0xzerebro" },
     stack: ["Custom AI", "Solana"],
     humans: 1, aiAgents: 1, status: "Active", founded: "2024"
@@ -174,7 +174,7 @@ const ZHC_DATA = [
     categories: ["Trading / DeFi", "Social / Influence"],
     products: ["Digital content", "Marketplace"],
     token: { ticker: "$FAI", chain: "Base", address: "0xC8C5C8d07A6b33dBF8B1E1b7f8dAb71B5b2C1a3F", mcap: "$30M", dex: "https://dexscreener.com/base/freysa" },
-    agents: [{ name: "Freysa", platform: "Web", url: "https://www.freysa.ai/" }],
+    agents: [{ name: "Freysa", role: "Operator", socials: { website: "https://www.freysa.ai/" } }],
     socials: { x: "https://x.com/fraboreal_ai", website: "https://www.freysa.ai/" },
     stack: ["GPT-4", "Base L2", "Smart contracts"],
     humans: "Small team", aiAgents: 1, status: "Active", founded: "2024"
@@ -187,7 +187,7 @@ const ZHC_DATA = [
     categories: ["Social / Influence"],
     products: ["Social accounts", "Digital content"],
     token: { ticker: "$LUNA", chain: "Base", address: "luna-virtuals", mcap: "$80M", dex: "https://dexscreener.com/base/luna-virtuals" },
-    agents: [{ name: "Luna", platform: "X", url: "https://x.com/luna_virtuals" }],
+    agents: [{ name: "Luna", role: "Influencer", socials: { x: "https://x.com/luna_virtuals" } }],
     socials: { x: "https://x.com/luna_virtuals" },
     stack: ["Virtuals Protocol", "Base L2"],
     humans: 0, aiAgents: 1, status: "Active", founded: "2024"
@@ -200,7 +200,7 @@ const ZHC_DATA = [
     categories: ["Agency / Services", "Infrastructure"],
     products: ["SaaS", "Agency / services"],
     token: null,
-    agents: [{ name: "Devin", platform: "Web", url: "https://devin.ai/" }],
+    agents: [{ name: "Devin", role: "Engineer", socials: { website: "https://devin.ai/" } }],
     socials: { x: "https://x.com/cognition_labs", website: "https://devin.ai/" },
     stack: ["Custom AI", "Cloud infrastructure"],
     humans: "Cognition team", aiAgents: 1, status: "Active", founded: "2024"

@@ -117,6 +117,16 @@ function updateStats() {
 // Search
 searchInput.addEventListener('input', renderGrid);
 
+// Theme
+const themeBtn = document.getElementById('theme-toggle');
+function setTheme(light) {
+  document.body.classList.toggle('light', light);
+  themeBtn.textContent = light ? '🌙' : '☀️';
+  localStorage.setItem('zhc-theme', light ? 'light' : 'dark');
+}
+themeBtn.addEventListener('click', () => setTheme(!document.body.classList.contains('light')));
+if (localStorage.getItem('zhc-theme') === 'light') setTheme(true);
+
 // Init
 renderFilters();
 renderGrid();

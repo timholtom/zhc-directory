@@ -64,10 +64,12 @@ function renderCard(z) {
   const agentCount = z.agents.length;
   const agentBadge = agentCount ? `<div class="card-agents">${agentCount} agent${agentCount > 1 ? 's' : ''}</div>` : '';
   
-  // Tags
-  const tags = z.categories.map(c => `<span class="tag tag-category">${c}</span>`).join('') +
-    (z.token ? `<span class="tag tag-chain">${z.token.chain}</span>` : '') +
-    `<span class="tag tag-status">${z.status}</span>`;
+  // Tags (categories only)
+  const tags = z.categories.map(c => `<span class="tag tag-category">${c}</span>`).join('');
+  
+  // Status dot
+  const statusColor = z.status === 'Active' ? 'green' : z.status === 'Experimental' ? 'yellow' : 'red';
+  const statusDot = `<div class="card-status card-status-${statusColor}"><span class="status-dot"></span>${z.status}</div>`;
 
   // Founder line
   const founderHtml = z.founder ? `<div class="card-founder">Founded by ${z.founder}</div>` : '';
@@ -87,19 +89,23 @@ function renderCard(z) {
     </div>`;
   }
 
-  // Agents section — separate from company socials
+  // Agents section — prominent with profile pics
   let agentsHtml = '';
   if (z.agents.length) {
     agentsHtml = `<div class="card-agents-section">
       <div class="card-section-label">Agents</div>
-      <div class="card-agent-list">${z.agents.map(a => 
-        `<a href="${a.url}" target="_blank" class="agent-chip">
-          <span class="agent-icon">🤖</span>
-          <span class="agent-name">${a.name}</span>
-          ${a.role ? `<span class="agent-role">${a.role}</span>` : ''}
-          <span class="agent-platform">${a.platform}</span>
-        </a>`
-      ).join('')}</div>
+      <div class="card-agent-list">${z.agents.map(a => {
+        const handle = a.url.includes('x.com/') ? a.url.split('x.com/')[1].replace(/\/.*$/,'') : '';
+        const pfp = handle ? `<img src="https://unavatar.io/x/${handle}" alt="${a.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="agent-avatar-fallback" style="display:none">🤖</span>` : `<span class="agent-avatar-fallback">🤖</span>`;
+        return `<a href="${a.url}" target="_blank" class="agent-chip">
+          <div class="agent-avatar">${pfp}</div>
+          <div class="agent-details">
+            <span class="agent-name">${a.name}</span>
+            ${a.role ? `<span class="agent-role">${a.role}</span>` : ''}
+          </div>
+        </a>`;
+      }).join('')}</div>
     </div>`;
   }
 
@@ -118,6 +124,7 @@ function renderCard(z) {
   const companyUrl = `company.html?c=${slugify(z.name)}`;
 
   return `<div class="card">
+    ${statusDot}
     ${agentBadge}
     <div class="card-header">
       <div class="card-logo">${z.logo}</div>
@@ -128,8 +135,8 @@ function renderCard(z) {
       </div>
     </div>
     <div class="card-tags">${tags}</div>
-    ${tokenHtml}
     ${agentsHtml}
+    ${tokenHtml}
     ${socialsHtml}
   </div>`;
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZHC Directory — Zero-Human Companies</title>
+<meta name="description" content="The definitive directory of Zero-Human Companies. AI agents running real businesses.">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">🤖 ZHC<span>Directory</span></a>
+    <div class="nav-links">
+      <a href="#directory">Directory</a>
+      <a href="#submit">Submit</a>
+      <a href="#newsletter">Newsletter</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">The first directory of its kind</div>
+  <h1>Zero-Human<br>Companies</h1>
+  <p class="hero-sub">AI agents running real businesses. No employees. Real revenue.<br>Track every ZHC, their tokens, their agents, and their stack.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num" id="total-count">0</span><span class="hero-stat-label">Companies</span></div>
+    <div class="hero-stat"><span class="hero-stat-num" id="token-count">0</span><span class="hero-stat-label">With Tokens</span></div>
+    <div class="hero-stat"><span class="hero-stat-num" id="category-count">0</span><span class="hero-stat-label">Categories</span></div>
+  </div>
+</header>
+
+<section class="filters" id="directory">
+  <div class="container">
+    <div class="filter-bar">
+      <input type="text" id="search" placeholder="Search companies, tokens, agents..." class="search-input">
+      <div class="filter-tags" id="filter-tags"></div>
+    </div>
+  </div>
+</section>
+
+<section class="directory">
+  <div class="container">
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="submit-section" id="submit">
+  <div class="container">
+    <h2>Know a ZHC we're missing?</h2>
+    <p>Submit it and we'll review it within 24 hours.</p>
+    <a href="https://forms.gle/placeholder" target="_blank" class="btn btn-primary">Submit a ZHC →</a>
+  </div>
+</section>
+
+<section class="newsletter-section" id="newsletter">
+  <div class="container">
+    <h2>Weekly ZHC Roundup</h2>
+    <p>New companies, token launches, agent drama. Every Thursday.</p>
+    <form class="newsletter-form" onsubmit="return false">
+      <input type="email" placeholder="you@email.com" class="email-input">
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>ZHC Directory — Cataloguing the autonomous economy</p>
+  <p class="footer-links"><a href="https://x.com/" target="_blank">X / Twitter</a></p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

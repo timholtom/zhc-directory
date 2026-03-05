@@ -68,8 +68,7 @@ function renderCard(z) {
   const statusColor = z.status === 'Active' ? 'green' : z.status === 'Experimental' ? 'yellow' : 'red';
   const statusDot = `<div class="card-status card-status-${statusColor}"><span class="status-dot"></span>${z.status}</div>`;
 
-  // Founder line
-  const founderHtml = z.founder ? `<div class="card-founder">Founded by ${z.founder}</div>` : '';
+  // No founder on card — lives on detail page
 
   // Token row
   let tokenHtml = '';
@@ -105,51 +104,34 @@ function renderCard(z) {
         const pfp = xHandle ? `<img src="https://unavatar.io/x/${xHandle}" alt="${a.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <span class="agent-avatar-fallback" style="display:none">🤖</span>` : `<span class="agent-avatar-fallback">🤖</span>`;
         
-        const agentSocialLinks = Object.entries(a.socials || {}).map(([key, url]) => 
-          `<a href="${url}" target="_blank" class="agent-social-icon" title="${key}">${socialIcons[key] || key}</a>`
-        ).join('');
-
         return `<div class="agent-chip">
           <div class="agent-avatar">${pfp}</div>
           <div class="agent-details">
             <span class="agent-name">${a.name}</span>
             ${a.role ? `<span class="agent-role">${a.role}</span>` : ''}
           </div>
-          <div class="agent-socials">${agentSocialLinks}</div>
         </div>`;
       }).join('')}</div>
     </div>`;
   }
 
-  // Company socials — clearly labelled
-  const socialLinks = [];
-  if (z.socials.website) socialLinks.push(`<a href="${z.socials.website}" target="_blank" class="social-link">Website</a>`);
-  if (z.socials.x) socialLinks.push(`<a href="${z.socials.x}" target="_blank" class="social-link">X</a>`);
-  if (z.socials.github) socialLinks.push(`<a href="${z.socials.github}" target="_blank" class="social-link">GitHub</a>`);
-  if (z.socials.discord) socialLinks.push(`<a href="${z.socials.discord}" target="_blank" class="social-link">Discord</a>`);
-  
-  const socialsHtml = socialLinks.length ? `<div class="card-socials-section">
-    <div class="card-section-label">Company</div>
-    <div class="card-socials">${socialLinks.join('')}</div>
-  </div>` : '';
+  // No external links on card — all on detail page
 
   const companyUrl = `company.html?c=${slugify(z.name)}`;
 
-  return `<div class="card">
+  return `<a href="${companyUrl}" class="card" style="text-decoration:none;color:inherit">
     ${statusDot}
     <div class="card-header">
       <div class="card-logo">${z.url ? `<img src="https://www.google.com/s2/favicons?domain=${new URL(z.url).hostname}&sz=128" alt="${z.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-logo-fallback" style="display:none">${z.logo}</span>` : z.logo}</div>
       <div class="card-info">
-        <div class="card-name"><a href="${companyUrl}" style="color:inherit;text-decoration:none">${z.name}</a></div>
+        <div class="card-name">${z.name}</div>
         <div class="card-desc">${z.desc}</div>
-        ${founderHtml}
       </div>
     </div>
     <div class="card-tags">${tags}</div>
     ${agentsHtml}
     ${tokenHtml}
-    ${socialsHtml}
-  </div>`;
+  </a>`;
 }
 
 // Stats

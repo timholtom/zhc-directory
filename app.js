@@ -1,5 +1,9 @@
 // ZHC Directory — App Logic
 
+function slugify(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
 const grid = document.getElementById('grid');
 const searchInput = document.getElementById('search');
 const filterTagsEl = document.getElementById('filter-tags');
@@ -111,12 +115,14 @@ function renderCard(z) {
     <div class="card-socials">${socialLinks.join('')}</div>
   </div>` : '';
 
+  const companyUrl = `company.html?c=${slugify(z.name)}`;
+
   return `<div class="card">
     ${agentBadge}
     <div class="card-header">
       <div class="card-logo">${z.logo}</div>
       <div class="card-info">
-        <div class="card-name"><a href="${z.url}" target="_blank" style="color:inherit;text-decoration:none">${z.name}</a></div>
+        <div class="card-name"><a href="${companyUrl}" style="color:inherit;text-decoration:none">${z.name}</a></div>
         <div class="card-desc">${z.desc}</div>
         ${founderHtml}
       </div>

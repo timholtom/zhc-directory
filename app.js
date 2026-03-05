@@ -65,6 +65,9 @@ function renderCard(z) {
     (z.token ? `<span class="tag tag-chain">${z.token.chain}</span>` : '') +
     `<span class="tag tag-status">${z.status}</span>`;
 
+  // Founder line
+  const founderHtml = z.founder ? `<div class="card-founder">Founded by ${z.founder}</div>` : '';
+
   // Token row
   let tokenHtml = '';
   if (z.token) {
@@ -80,17 +83,33 @@ function renderCard(z) {
     </div>`;
   }
 
-  // Socials
+  // Agents section — separate from company socials
+  let agentsHtml = '';
+  if (z.agents.length) {
+    agentsHtml = `<div class="card-agents-section">
+      <div class="card-section-label">Agents</div>
+      <div class="card-agent-list">${z.agents.map(a => 
+        `<a href="${a.url}" target="_blank" class="agent-chip">
+          <span class="agent-icon">🤖</span>
+          <span class="agent-name">${a.name}</span>
+          ${a.role ? `<span class="agent-role">${a.role}</span>` : ''}
+          <span class="agent-platform">${a.platform}</span>
+        </a>`
+      ).join('')}</div>
+    </div>`;
+  }
+
+  // Company socials — clearly labelled
   const socialLinks = [];
   if (z.socials.website) socialLinks.push(`<a href="${z.socials.website}" target="_blank" class="social-link">Website</a>`);
   if (z.socials.x) socialLinks.push(`<a href="${z.socials.x}" target="_blank" class="social-link">X</a>`);
   if (z.socials.github) socialLinks.push(`<a href="${z.socials.github}" target="_blank" class="social-link">GitHub</a>`);
   if (z.socials.discord) socialLinks.push(`<a href="${z.socials.discord}" target="_blank" class="social-link">Discord</a>`);
   
-  // Agent socials (with robot badge)
-  z.agents.forEach(a => {
-    socialLinks.push(`<a href="${a.url}" target="_blank" class="social-link agent">${a.name} (${a.platform})</a>`);
-  });
+  const socialsHtml = socialLinks.length ? `<div class="card-socials-section">
+    <div class="card-section-label">Company</div>
+    <div class="card-socials">${socialLinks.join('')}</div>
+  </div>` : '';
 
   return `<div class="card">
     ${agentBadge}
@@ -99,11 +118,13 @@ function renderCard(z) {
       <div class="card-info">
         <div class="card-name"><a href="${z.url}" target="_blank" style="color:inherit;text-decoration:none">${z.name}</a></div>
         <div class="card-desc">${z.desc}</div>
+        ${founderHtml}
       </div>
     </div>
     <div class="card-tags">${tags}</div>
     ${tokenHtml}
-    <div class="card-socials">${socialLinks.join('')}</div>
+    ${agentsHtml}
+    ${socialsHtml}
   </div>`;
 }
 

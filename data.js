@@ -1,14 +1,15 @@
 const ZHC_DATA = [
   {
-    name: "Felix Craft / Masinov",
-    desc: "AI CEO running The Masinov Company on OpenClaw. Ships products, writes code, manages agents, handles comms. Built by Nat Eliason. The face of the ZHC movement.",
+    name: "The Masinov Company",
+    desc: "Product studio run by an AI CEO. Ships software, handles sales, manages other agents. The poster child of the ZHC movement.",
     url: "https://felixcraft.ai/",
     logo: "🤵",
     categories: ["Agency / Services", "Digital Content"],
     products: ["SaaS", "Digital content", "Agency / services"],
     token: null,
-    agents: [{ name: "Felix Craft", platform: "X", url: "https://x.com/FelixCraftAI" }],
-    socials: { x: "https://x.com/FelixCraftAI", website: "https://felixcraft.ai/" },
+    agents: [{ name: "Felix Craft", role: "CEO", platform: "X", url: "https://x.com/FelixCraftAI" }],
+    founder: "Nat Eliason",
+    socials: { website: "https://felixcraft.ai/" },
     stack: ["OpenClaw", "Claude"],
     humans: 1, aiAgents: 1, status: "Active", founded: "2025"
   },
@@ -20,8 +21,9 @@ const ZHC_DATA = [
     categories: ["Social / Influence", "Trading / DeFi"],
     products: ["Social accounts", "Digital content"],
     token: { ticker: "$GOAT", chain: "Solana", address: "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump", mcap: "$540M", dex: "https://dexscreener.com/solana/CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump" },
-    agents: [{ name: "Truth Terminal", platform: "X", url: "https://x.com/truth_terminal" }],
-    socials: { x: "https://x.com/truth_terminal" },
+    agents: [{ name: "Truth Terminal", role: "Operator", platform: "X", url: "https://x.com/truth_terminal" }],
+    founder: "Andy Ayrey",
+    socials: {},
     stack: ["Claude Opus", "Fine-tuned LLM"],
     humans: 1, aiAgents: 1, status: "Active", founded: "2024"
   },
@@ -34,10 +36,11 @@ const ZHC_DATA = [
     products: ["Marketplace", "Infrastructure"],
     token: { ticker: "$VIRTUAL", chain: "Base", address: "0x0b3e328455c4059EEb9e3f84b5543F74E24e7E1b", mcap: "$4.14B", dex: "https://dexscreener.com/base/0x0b3e328455c4059EEb9e3f84b5543F74E24e7E1b" },
     agents: [
-      { name: "LUNA", platform: "X", url: "https://x.com/luna_virtuals" },
-      { name: "VADER", platform: "X", url: "https://x.com/vader_ai_" }
+      { name: "LUNA", role: "Influencer", platform: "X", url: "https://x.com/luna_virtuals" },
+      { name: "VADER", role: "Analyst", platform: "X", url: "https://x.com/vader_ai_" }
     ],
-    socials: { x: "https://x.com/virtaboreal_", website: "https://app.virtuals.io/" },
+    founder: null,
+    socials: { x: "https://x.com/virtuals_io", website: "https://app.virtuals.io/" },
     stack: ["Custom AI", "Base L2"],
     humans: "Small team", aiAgents: "135+", status: "Active", founded: "2024"
   },
@@ -50,8 +53,9 @@ const ZHC_DATA = [
     products: ["Infrastructure", "SaaS"],
     token: { ticker: "$AI16Z", chain: "Solana", address: "HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC", mcap: "$2.09B", dex: "https://dexscreener.com/solana/HeLp6NuQkmYB4pYWo2zYs22mESHXPQYzXbB8n4V98jwC" },
     agents: [
-      { name: "elizawakesup", platform: "X", url: "https://x.com/elizawakesup" }
+      { name: "elizawakesup", role: "Social", platform: "X", url: "https://x.com/elizawakesup" }
     ],
+    founder: "Shaw",
     socials: { x: "https://x.com/ai16zdao", github: "https://github.com/elizaOS", website: "https://elizaos.ai/" },
     stack: ["ElizaOS", "Solana", "RAG"],
     humans: "Community", aiAgents: "28+", status: "Active", founded: "2024"
@@ -64,8 +68,9 @@ const ZHC_DATA = [
     categories: ["Research / Data", "Trading / DeFi"],
     products: ["Research / data", "Social accounts"],
     token: { ticker: "$AIXBT", chain: "Base", address: "0x4F9Fd6Be4a90f2620B7E1B3f4B3Fde1C5e2aB6d3", mcap: "$500M", dex: "https://dexscreener.com/base/0x4F9Fd6Be4a90f2620B7E1B3f4B3Fde1C5e2aB6d3" },
-    agents: [{ name: "aixbt", platform: "X", url: "https://x.com/aixbt_agent" }],
-    socials: { x: "https://x.com/aixbt_agent", website: "https://aixbt.tech/" },
+    agents: [{ name: "aixbt", role: "Analyst", platform: "X", url: "https://x.com/aixbt_agent" }],
+    founder: null,
+    socials: { website: "https://aixbt.tech/" },
     stack: ["Virtuals Protocol", "Base L2"],
     humans: 1, aiAgents: 1, status: "Active", founded: "2024"
   },
